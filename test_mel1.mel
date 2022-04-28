@@ -1,0 +1,53 @@
+proc global Ex2 ()
+{
+    move -r 0 1.5 0;
+}
+
+proc global Ex3 ()
+{
+    print("Objects" + size(`ls -sl`));
+}
+
+proc global Ex4 ()
+{
+    //alzo bandiera bianca
+    print("Transform:")
+    print (size(`ls -sl -tr`));
+    print("Mesh:")
+    print (size(`ls -type "mesh"`));
+    print("Joint:"
+    print(size(`ls -type "joints"`));
+}
+
+//All Ex5
+global string $Aiv_Field_Name = "";
+global proc Ex5()
+{
+    global string $Aiv_Field_Name;
+    string $Window = "Window";
+    if(`window -q -ex $Window`)
+    {
+        deleteUI $Window;
+    }
+    window -wh 500 500 -s false $Window;
+        columnLayout -adj true;
+            rowLayout -nc 2;
+                text -l "Insert Name Here";
+                textField -tx $Aiv_Field_Name;
+            setParent ..;
+            button -l "Confirm Name" -c "NameSelected" ;
+            text -l "Wlecome" $Aiv_Field_Name;
+        setParent ..;
+    showWindow $Window;
+}
+global proc NameSelected(){
+    global string $Aiv_Field_Name;
+        text -l "Welecome" $Aiv_Field_Name;
+}
+Ex5;
+//end ex5
+
+global proc Ex1()
+{
+
+}
